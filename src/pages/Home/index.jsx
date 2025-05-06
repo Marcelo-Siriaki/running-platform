@@ -1,96 +1,53 @@
 import './style.css'
 import Header from '../../components/Header'
-import toggleRight from '../../assets/blue-toggle-button-right.svg'
-import toggleLeft from '../../assets/blue-toggle-button-left.svg'
+import SpeedPaceConverter from '../../components/SpeedPaceConverter'
+import MethodsTable from '../../components/MethodsTable'
+import LongHiit from '../../components/LongHiit'
+import ShortHiit from '../../components/ShortHiit'
+import Sit from '../../components/Sit'
 import { useState } from 'react'
 
 function Home() {
+  const [method, setMethod] = useState('');
+  const componentsMap = {
+    SpeedPaceConverter: SpeedPaceConverter,
+    LongHiit: LongHiit,
+    ShortHiit: ShortHiit,
+    Sit: Sit,
+  };
 
-  const [isSpeed, setIsSpeed] = useState(true);
-  const [input, setInput] = useState('');
-  const [result, setResult] = useState('');
+  const SelectedComponent = componentsMap[method];
 
-  function handleToggle() {
-    setIsSpeed(!isSpeed);
-    setInput('');
-    setResult('');
+  const callMethod = (e) => {
+
+    setMethod(e.target.name);
   }
 
-  function handleInputChange(e) {
-    const inputValue = e.target.value;
-
-    if (isSpeed) {
-      if (/^\d*\.?\d*$/.test(inputValue)) {
-        setInput(inputValue);
-      }
-    } else {
-      if (/^\d{0,2}(:\d{0,2})?$/.test(inputValue)) {
-        setInput(inputValue);
-      }
-    }
-
-  }
-
-  function convert() {
-
-    if (!input) return;
-
-    if (isSpeed) {
-      const speed = parseFloat(input.trim());
-
-      if (speed > 0) {
-        const pace = 60 / speed;
-        const minutes = Math.floor(pace);
-        const seconds = Math.round((pace - minutes) * 60);
-        setResult(`Your pace is ${minutes}:${seconds < 10 ? '0' : ''}${seconds} min/km`);
-      }
-    } else {
-      if (input.includes(':')) {
-        const time = (input.trim()).split(':');
-        const minutes = parseFloat(time[0]) + (parseFloat(time[1]) / 60);
-        const speed = (60 / minutes).toFixed(2);
-
-        setResult(`Your speed is ${speed} km/h`);
-      } else {
-        const minutes = parseFloat(input.trim());
-        const speed = (60 / minutes).toFixed(2);
-
-        setResult(`Your speed is ${speed} km/h`);
-      }
-    }
+  const callBackToMenu = () => {
+    setMethod('');
 
   }
 
   return (
+
     <div className='container'>
+      <Header />
       <>
-        <Header />
+        {method === '' &&
+          <section className='menu-container'>
+            <button className='methods-btns' onClick={callMethod} name='SpeedPaceConverter'>Speed and Pace Converter</button>
+            <button className='methods-btns' onClick={callMethod} name='LongHiit'>L-HIIT - Long High Intensity Interval Training</button>
+            <button className='methods-btns' onClick={callMethod} name='ShortHiit'>S-HIIT - Short High Intensity Interval Training</button>
+            <button className='methods-btns' onClick={callMethod} name='Sit'>SIT - Sprint Interval Training</button>
+          </section>
+        }
       </>
 
-      <div className='calc-container'>
+      <>
+        {method !== '' && <SelectedComponent />}
+        {method !== '' && <button className='back-to-menu-btn' onClick={callBackToMenu}>Back to Menu</button>}
+      </>
 
-        <div className='toggle-select'>
-          <p className='speed-pace-txt'>Speed (km/h)</p>
-          <img className='toggle' src={isSpeed ? toggleLeft : toggleRight} alt='toggle' onClick={handleToggle} />
-          <p className='speed-pace-txt'>Pace (min/km)</p>
-        </div>
-
-
-        <div className='write-your-speed'>
-          <input
-            type='text'
-            value={input}
-            onChange={handleInputChange}
-            placeholder={isSpeed ? '10.5' : '6:10'}
-          />
-          <button className='btn-convert' onClick={convert}>Convert</button>
-        </div>
-        {result !== '' && (
-          <div className='result'>
-            {result}
-          </div>
-        )}
-      </div>
 
     </div>
   )

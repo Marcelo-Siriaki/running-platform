@@ -10,7 +10,7 @@ export default function Header() {
         <header className='header-container'>
             <div className='logo-txt-container'>
                 <img className='sonic' src={Sonic} alt='sonic' />
-                <h1 className='txt-logo'>Speed and Pace Converter</h1>
+                <h1 className='txt-logo'>Running Platform</h1>
             </div>
             <div className='logo-txt-container'>
                 <Link to='/' className={location.pathname === '/' ? 'txt-logo-active' : 'txt-logo'}>Home</Link>

@@ -1,0 +1,105 @@
+.container-speed-pace {
+    display: flex;
+    flex-direction: column;
+    width: 50rem;
+    height: 20rem;
+    align-self: center;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.title-speed-pace {
+    all: unset;
+    width: 30rem;
+    color: #5767C9;
+    padding: 0.8rem 1.6rem;
+    border-radius: 4px;
+    font-size: 2.3rem;
+    text-align: center;
+    transition: background-color 0.3s;
+    font-weight: 900;
+}
+
+.calc-container {
+    display: flex;
+    flex-direction: column;
+    width: 50rem;
+    height: 20rem;
+    align-self: center;
+    align-items: center;
+    justify-content: space-around;
+
+    border: 0.2rem solid aquamarine;
+}
+
+.toggle-select {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 30rem;
+
+    color: aquamarine;
+    font-size: 3rem;
+}
+
+.speed-pace-txt {
+    width: 12rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle {
+    height: 5rem;
+    cursor: pointer;
+}
+
+.write-your-speed {
+    color: #5767C9;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: space-between;
+    width: 30rem;
+    font-size: 2rem;
+    padding: 0 auto;
+}
+
+.write-your-speed input {
+    all: unset;
+    width: 12rem;
+    background-color: transparent;
+    color: aquamarine;
+    padding: 0.8rem 1.6rem;
+    border-radius: 4px;
+    font-size: 2rem;
+    text-align: center;
+    transition: background-color 0.3s;
+    border: 0.1rem solid aquamarine;
+}
+
+.btn-convert {
+    all: unset;
+    cursor: pointer;
+    background-color: #5767C9;
+    color: aquamarine;
+    padding: 0.8rem 1.6rem;
+    border-radius: 4px;
+    font-size: 2rem;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn-convert:hover {
+    background-color: blueviolet;
+}
+
+.result {
+    width: 40rem;
+    background-color: transparent;
+    color: aquamarine;
+    padding: 0.8rem 1.6rem;
+    font-size: 2rem;
+    text-align: center;
+}
