@@ -16,6 +16,7 @@ function SpeedPaceConverter() {
   }
 
   function handleInputChange(e) {
+    e.preventDefault();
     const inputValue = e.target.value;
 
     if (isSpeed) {

@@ -1,0 +1,74 @@
+.container-l-hiit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.title-l-hiit {
+    all: unset;
+    width: 30rem;
+    color: #5767C9;
+    padding: 0.8rem 1.6rem;
+    border-radius: 4px;
+    font-size: 2.3rem;
+    text-align: center;
+    transition: background-color 0.3s;
+    font-weight: 600;
+}
+
+.select-method-container {
+    display: flex;
+    flex-direction: column;
+    width: 50rem;
+    height: 20rem;
+    align-self: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    border: 0.2rem solid aquamarine;
+}
+
+.select-method-title-container {
+    /* border: 0.2rem solid blue; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4rem;
+}
+
+.select-method-txt {
+    all: unset;
+    width: 100%;
+    color: #5767C9;
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    font-weight: 500;
+}
+
+select {
+    all: unset;
+    color: aquamarine;
+    font-size: 2rem;
+    text-align: center;
+    transition: background-color 0.3s;
+    font-weight: 500;
+    background-color: transparent;
+    border: none;
+    margin-left: 1rem;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='aquamarine'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.01rem center;
+    padding-right: 2rem;
+    cursor: pointer;
+}
+
+select option {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: aquamarine;
+    border: none;
+}
