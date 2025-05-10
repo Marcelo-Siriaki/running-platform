@@ -1,14 +1,13 @@
 import './style.css'
 import Header from '../../components/Header'
 import SpeedPaceConverter from '../../components/SpeedPaceConverter'
-import MethodsTable from '../../components/MethodsTable'
 import LongHiit from '../../components/LongHiit'
 import ShortHiit from '../../components/ShortHiit'
 import Sit from '../../components/Sit'
-import { useState } from 'react'
+import useStore from '../../hooks/store'
 
 function Home() {
-  const [method, setMethod] = useState('');
+  const { menuOption, setMenuOption } = useStore();
   const componentsMap = {
     SpeedPaceConverter: SpeedPaceConverter,
     LongHiit: LongHiit,
@@ -16,24 +15,20 @@ function Home() {
     Sit: Sit,
   };
 
-  const SelectedComponent = componentsMap[method];
+  const SelectedComponent = componentsMap[menuOption];
 
   const callMethod = (e) => {
 
-    setMethod(e.target.name);
+    setMenuOption(e.target.name);
   }
 
-  const callBackToMenu = () => {
-    setMethod('');
-
-  }
 
   return (
 
     <div className='container'>
       <Header />
       <>
-        {method === '' &&
+        {menuOption === '' &&
           <section className='menu-container'>
             <button className='methods-btns' onClick={callMethod} name='SpeedPaceConverter'>Speed and Pace Converter</button>
             <button className='methods-btns' onClick={callMethod} name='LongHiit'>L-HIIT - Long High Intensity Interval Training</button>
@@ -44,8 +39,7 @@ function Home() {
       </>
 
       <>
-        {method !== '' && <SelectedComponent />}
-        {method !== '' && <button className='back-to-menu-btn' onClick={callBackToMenu}>Back to Menu</button>}
+        {menuOption !== '' && <SelectedComponent />}
       </>
 
 

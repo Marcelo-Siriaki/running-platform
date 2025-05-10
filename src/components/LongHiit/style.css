@@ -72,3 +72,20 @@ select option {
     color: aquamarine;
     border: none;
 }
+
+.back-to-menu-btn {
+    all: unset;
+    cursor: pointer;
+    background-color: green;
+    color: aquamarine;
+    padding: 0.8rem 1.6rem;
+    border-radius: 4px;
+    font-size: 2rem;
+    text-align: center;
+    transition: background-color 0.3s;
+    margin-top: 3rem;
+}
+
+.back-to-menu-btn:hover {
+    background-color: rgb(7, 80, 7);
+}

@@ -1,16 +1,43 @@
 import './style.css'
-import { useState } from 'react';
+import useStore from '../../hooks/store';
 
 export default function FormMethods({ method }) {
 
-    const [speed, setSpeed] = useState('');
-    const [age, setAge] = useState('');
-    const [restHr, setRestHr] = useState('');
-    const [sex, setSex] = useState('');
-    const [pse, setPse] = useState('');
+    const {
+        speed,
+        setSpeed,
+        age,
+        setAge,
+        restHr,
+        setRestHr,
+        sex,
+        setSex,
+        pse,
+        setPse,
+        selectedMethod,
+        setSelectedMethod,
+    } = useStore();
+
 
     function handleSubmit(e) {
         e.preventDefault();
+
+        if (selectedMethod === 'vo2' && parseFloat(speed) < 5) {
+            console.log('Too slow');
+            return;
+        }
+
+
+        if (selectedMethod === 'hr') {
+
+        }
+        if (selectedMethod === 'rhr') {
+
+        }
+        if (selectedMethod === 'pse') {
+
+        }
+
     }
 
 
@@ -159,8 +186,8 @@ export default function FormMethods({ method }) {
                             type='radio'
                             name='pse'
                             value='1-10'
-                            checked={sex === '1-10'}
-                            onChange={(e) => { setSex(e.target.value) }
+                            checked={pse === '1-10'}
+                            onChange={(e) => { setPse(e.target.value) }
                             }
                         />
                     </label>
@@ -170,8 +197,8 @@ export default function FormMethods({ method }) {
                             type='radio'
                             name='pse'
                             value='6-20'
-                            checked={sex === '6-20'}
-                            onChange={(e) => { setSex(e.target.value) }
+                            checked={pse === '6-20'}
+                            onChange={(e) => { setPse(e.target.value) }
                             }
                         />
                     </label>

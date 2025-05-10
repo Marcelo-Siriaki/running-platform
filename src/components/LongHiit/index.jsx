@@ -1,10 +1,18 @@
-import { useState } from 'react'
 import './style.css'
 import FormMethods from '../FormMethods';
+import useStore from '../../hooks/store';
 
 function LongHiit() {
 
-    const [selectedMethod, setSelectedMethod] = useState('vo2');
+    const {
+        setMenuOption,
+        selectedMethod,
+        setSelectedMethod,
+    } = useStore();
+
+    const callBackToMenu = () => {
+        setMenuOption('');
+    }
 
     return (
         <div className='container-l-hiit'>
@@ -24,7 +32,7 @@ function LongHiit() {
                 {selectedMethod !== '' && <FormMethods method={selectedMethod} />}
 
             </div>
-
+            <button className='back-to-menu-btn' onClick={callBackToMenu}>Back to Menu</button>
         </div>
     )
 }
