@@ -3,22 +3,22 @@ import FormMethods from '../FormMethods'
 import useStore from '../../hooks/store'
 import BackToMenuBtn from '../BackToMenuBtn'
 
-function Sit() {
+function Modality() {
 
-    const { selectedMethod, setSelectedMethod } = useStore();
+    const { setSelectedMethod, selectedMethod, modality } = useStore()
 
 
     return (
         <div className='container-l-hiit'>
-            <h1 className='title-l-hiit'>Sprint Interval Training</h1>
+            <h1 className='title-l-hiit'>{modality}</h1>
             <div className='select-method-container '>
 
                 <div className='select-method-title-container'>
                     <label className='select-method-txt'> Select the Method:
-                        <select name='selectedMethod' onChange={e => setSelectedMethod(e.target.value)}>
-                            <option value='vo2'>Speed of VO2máx or VO2pike</option>
+                        <select name='selectedMethod' onChange={(e) => setSelectedMethod(e.target.value)}>
+                            <option value='vo2'>Velocity of VO2máx or VO2pike</option>
                             <option value='hr'>Maximum Heart Rate</option>
-                            <option value='rhr'>Reserve Heart Rate</option>
+                            <option value='rhr'>Heart Rate Reserve</option>
                             <option value='pse'>Perceived Subjective Exertion</option>
                         </select>
                     </label>
@@ -31,4 +31,4 @@ function Sit() {
     )
 }
 
-export default Sit
+export default Modality

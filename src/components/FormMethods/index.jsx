@@ -115,7 +115,7 @@ export default function FormMethods({ method }) {
             className='form-container'
         >
             {method === 'vo2' ? (<div className='form'>
-                <span className='your-data-txt'>Speed at Vo2máx or Vo2pike:</span>
+                <span className='your-data-txt'>Velocity at Vo2máx or Vo2peak:</span>
                 <input
                     className='form-input'
                     type='text'
@@ -184,7 +184,7 @@ export default function FormMethods({ method }) {
                     GO!</button>
 
             </div>) : (method === 'rhr' ? (<div className='form'>
-                <span className='your-data-txt-hr'>Age, Rest HR and Sex</span>
+                <span className='your-data-txt-hr'>Age, Rest Heart Rate and Sex</span>
                 <input
                     className='form-input-hr'
                     type='text'
