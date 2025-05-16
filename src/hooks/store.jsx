@@ -15,6 +15,22 @@ const useStore = create((set) => ({
     setMenuOption: (menuOption) => set({ menuOption }),
     selectedMethod: 'vo2',
     setSelectedMethod: (selectedMethod) => set({ selectedMethod }),
+    fcMax: null,
+    setFcMax: (fcMax) => set({ fcMax }),
+    hrReserve: null,
+    setHrReserve: (hrReserve) => set({ hrReserve }),
+    resetFormAndMethods: () => set({
+        age: '',
+        sex: '',
+        speed: '',
+        restHr: '',
+        pse: '',
+        menuOption: '',
+        selectedMethod: 'vo2',
+        fcMax: null,
+        hrReserve: null,
+    }),
+
 }
 ));
 

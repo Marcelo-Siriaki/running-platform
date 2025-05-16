@@ -2,15 +2,13 @@ import './style.css'
 import toggleRight from '../../assets/blue-toggle-button-right.svg'
 import toggleLeft from '../../assets/blue-toggle-button-left.svg'
 import { useState } from 'react'
-import useStore from '../../hooks/store';
+import BackToMenuBtn from '../BackToMenuBtn'
 
 function SpeedPaceConverter() {
 
   const [isSpeed, setIsSpeed] = useState(true);
   const [input, setInput] = useState('');
   const [result, setResult] = useState('');
-
-  const { setMenuOption } = useStore();
 
   function handleToggle() {
     setIsSpeed(!isSpeed);
@@ -61,11 +59,6 @@ function SpeedPaceConverter() {
         setResult(`Your speed is ${speed} km/h`);
       }
     }
-
-  }
-
-  const callBackToMenu = () => {
-    setMenuOption('');
   }
 
   return (
@@ -95,7 +88,7 @@ function SpeedPaceConverter() {
           </div>
         )}
       </div>
-      <button className='back-to-menu-btn' onClick={callBackToMenu}>Back to Menu</button>
+      <BackToMenuBtn />
     </div>
   )
 }

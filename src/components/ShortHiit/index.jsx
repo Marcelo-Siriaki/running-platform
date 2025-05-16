@@ -1,16 +1,11 @@
-import { useState } from 'react'
 import './style.css'
-import FormMethods from '../FormMethods';
-import useStore from '../../hooks/store';
+import FormMethods from '../FormMethods'
+import useStore from '../../hooks/store'
+import BackToMenuBtn from '../BackToMenuBtn'
 
 function ShortHiit() {
 
-    const { setMenuOption } = useStore();
-    const [selectedMethod, setSelectedMethod] = useState('vo2');
-
-    const callBackToMenu = () => {
-        setMenuOption('');
-    }
+    const { selectedMethod, setSelectedMethod } = useStore();
 
     return (
         <div className='container-l-hiit'>
@@ -30,7 +25,7 @@ function ShortHiit() {
                 {selectedMethod !== '' && <FormMethods method={selectedMethod} />}
 
             </div>
-            <button className='back-to-menu-btn' onClick={callBackToMenu}>Back to Menu</button>
+            <BackToMenuBtn />
         </div>
     )
 }

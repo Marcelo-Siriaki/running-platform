@@ -1,16 +1,12 @@
-import { useState } from 'react'
 import './style.css'
-import FormMethods from '../FormMethods';
-import useStore from '../../hooks/store';
+import FormMethods from '../FormMethods'
+import useStore from '../../hooks/store'
+import BackToMenuBtn from '../BackToMenuBtn'
 
 function Sit() {
 
-    const { setMenuOption } = useStore();
-    const [selectedMethod, setSelectedMethod] = useState('vo2');
+    const { selectedMethod, setSelectedMethod } = useStore();
 
-    const callBackToMenu = () => {
-        setMenuOption('');
-    }
 
     return (
         <div className='container-l-hiit'>
@@ -30,7 +26,7 @@ function Sit() {
                 {selectedMethod !== '' && <FormMethods method={selectedMethod} />}
 
             </div>
-            <button className='back-to-menu-btn' onClick={callBackToMenu}>Back to Menu</button>
+            <BackToMenuBtn />
         </div>
     )
 }

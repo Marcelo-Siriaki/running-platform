@@ -1,18 +1,15 @@
 import './style.css'
-import FormMethods from '../FormMethods';
-import useStore from '../../hooks/store';
+import FormMethods from '../FormMethods'
+import useStore from '../../hooks/store'
+import BackToMenuBtn from '../BackToMenuBtn'
 
 function LongHiit() {
 
     const {
-        setMenuOption,
         selectedMethod,
         setSelectedMethod,
     } = useStore();
 
-    const callBackToMenu = () => {
-        setMenuOption('');
-    }
 
     return (
         <div className='container-l-hiit'>
@@ -32,7 +29,7 @@ function LongHiit() {
                 {selectedMethod !== '' && <FormMethods method={selectedMethod} />}
 
             </div>
-            <button className='back-to-menu-btn' onClick={callBackToMenu}>Back to Menu</button>
+            <BackToMenuBtn />
         </div>
     )
 }

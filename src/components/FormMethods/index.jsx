@@ -14,28 +14,96 @@ export default function FormMethods({ method }) {
         setSex,
         pse,
         setPse,
-        selectedMethod,
-        setSelectedMethod,
+        fcMax,
+        setFcMax,
+        hrReserve,
+        setHrReserve,
     } = useStore();
 
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (selectedMethod === 'vo2' && parseFloat(speed) < 5) {
-            console.log('Too slow');
+        const parsedAge = parseFloat(age);
+        const parsedSpeed = parseFloat(speed);
+        const parsedRestHr = parseFloat(restHr);
+
+        if (method === 'vo2') {
+            if (!speed) {
+                console.log('Complete your speed at Vo2máx or Vo2pike');
+                return;
+            }
+            if (parsedSpeed < 5) {
+                console.log('Too slow. You need personal help');
+                return;
+            }
+
+            console.log('Very good');
+        }
+
+
+        if (method === 'hr') {
+            if (!age) {
+                console.log('complete your age');
+                return;
+            }
+            if (parsedAge > 99 || parsedAge < 16) {
+                console.log('Your age is not compatible with this platform Sorry.');
+                return;
+            }
+            if (!sex) {
+                console.log('select your gender');
+                return;
+            }
+
+            const fc = sex === 'male'
+                ? 208 - (0.7 * parsedAge)
+                : 206 - (0.88 * parsedAge);
+
+            setFcMax(fc);
+            console.log(fcMax);
             return;
-        }
-
-
-        if (selectedMethod === 'hr') {
 
         }
-        if (selectedMethod === 'rhr') {
+        if (method === 'rhr') {
+
+            if (!age) {
+                console.log('complete your age');
+                return;
+            }
+            if (parsedAge > 99 || parsedAge < 16) {
+                console.log('Your age is not compatible with this platform Sorry.');
+                return;
+            }
+
+            if (!restHr || parsedRestHr > 70 || parsedRestHr < 30) {
+                console.log('Complete your Rest Heart Rate or check it again');
+                return;
+            }
+
+            if (!sex) {
+                console.log('select your gender');
+                return;
+            }
+
+            const heartRateReserve = sex === 'male'
+                ? ((208 - (0.7 * parsedAge)) - parsedRestHr)
+                : ((206 - (0.88 * parsedAge)) - parsedRestHr);
+
+            setHrReserve(heartRateReserve);
+            console.log(hrReserve);
+            return;
 
         }
-        if (selectedMethod === 'pse') {
+        if (method === 'pse') {
 
+            if (!pse) {
+                console.log('Select the scale you wnat to use');
+                return;
+            }
+
+            console.log(`Ok, you selected the scale ${pse} for the PSE`);
+            return;
         }
 
     }
